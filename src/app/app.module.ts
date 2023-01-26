@@ -7,6 +7,10 @@ import { HomeComponent } from './components/home/home.component';
 import { ProductsComponent } from './components/products/products.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { CartComponent } from './components/cart/cart.component';
+import { HeaderComponent } from './components/header/header.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ProductCardComponent } from './components/products/product-card/product-card.component';
+import { ProductDetailComponent } from './components/products/product-detail/product-detail/product-detail.component';
 
 @NgModule({
   declarations: [
@@ -14,13 +18,13 @@ import { CartComponent } from './components/cart/cart.component';
     HomeComponent,
     ProductsComponent,
     ContactComponent,
-    CartComponent
+    CartComponent,
+    HeaderComponent,
+    ProductCardComponent,
+    ProductDetailComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
