@@ -11,6 +11,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductCardComponent } from './components/products/product-card/product-card.component';
 import { ProductDetailComponent } from './components/products/product-detail/product-detail/product-detail.component';
+import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,13 @@ import { ProductDetailComponent } from './components/products/product-detail/pro
     ProductCardComponent,
     ProductDetailComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    NgbRatingModule,
+    NgbModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

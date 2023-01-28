@@ -4,5 +4,7 @@ export interface Articles {
   price: number;
   image: string[];
   description: string;
+  rating: number;
+  cod: number;
   id: string;
 }

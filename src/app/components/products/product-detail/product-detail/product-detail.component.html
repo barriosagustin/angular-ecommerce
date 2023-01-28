@@ -1,28 +1,28 @@
-<div class="small-container single-product">
+<div class="small-container single-product" *ngFor="let item of articles">
     <div class="row">
         <div class="col-2">
-            <img src="images/gallery-1.jpg" width="100%" id="ProductImg">
+            <img src="{{item.image}}" width="100%" id="ProductImg">
 
             <div class="small-img-row">
                 <div class="small-img-col">
-                    <img src="images/gallery-1.jpg" width="100%" class="small-img">
+                    <img src="{{item.image}}" width="100%" class="small-img">
                 </div>
                 <div class="small-img-col">
-                    <img src="images/gallery-2.jpg" width="100%" class="small-img">
+                    <img src="{{item.image}}" width="100%" class="small-img">
                 </div>
                 <div class="small-img-col">
-                    <img src="images/gallery-3.jpg" width="100%" class="small-img">
+                    <img src="{{item.image}}" width="100%" class="small-img">
                 </div>
                 <div class="small-img-col">
-                    <img src="images/gallery-4.jpg" width="100%" class="small-img">
+                    <img src="{{item.image}}" width="100%" class="small-img">
                 </div>
             </div>
 
         </div>
-        <div class="col-2">
-            <p>Home / T-Shirt</p>
-            <h1>Red Printed T-Shirt by HRX</h1>
-            <h4>$50.00</h4>
+        <div class="col-2" >
+            <p>{{item.category}}</p>
+            <h1>{{item.title}}</h1>
+            <h4>${{item.price}}</h4>
             <select>
                 <option>Select Size</option>
                 <option>XXL</option>
@@ -36,8 +36,7 @@
 
             <h3>Product Details <i class="fa fa-indent"></i></h3>
             <br>
-            <p>Give your summer wardrobe a style upgrade with the HRX Men's Active T-Shirt. Team it with a pair of
-                shorts for your morning workout or a denims for an evening out with the guys.</p>
+            <p>{{item.description}}</p>
         </div>
     </div>
 </div>
@@ -52,7 +51,7 @@
 <div class="small-container">
     <div class="row">
         <div class="col-4">
-            <img src="images/product-9.jpg">
+            <img src="">
             <h4>Red Printed T-Shirt</h4>
             <div class="rating">
                 <i class="fa fa-star"></i>
@@ -64,7 +63,7 @@
             <p>$50.00</p>
         </div>
         <div class="col-4">
-            <img src="images/product-10.jpg">
+            <img src="">
             <h4>Red Printed T-Shirt</h4>
             <div class="rating">
                 <i class="fa fa-star"></i>
@@ -76,7 +75,7 @@
             <p>$50.00</p>
         </div>
         <div class="col-4">
-            <img src="images/product-11.jpg">
+            <img src="">
             <h4>Red Printed T-Shirt</h4>
             <div class="rating">
                 <i class="fa fa-star"></i>
@@ -88,7 +87,7 @@
             <p>$50.00</p>
         </div>
         <div class="col-4">
-            <img src="images/product-12.jpg">
+            <img src="">
             <h4>Red Printed T-Shirt</h4>
             <div class="rating">
                 <i class="fa fa-star"></i>

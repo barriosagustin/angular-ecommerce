@@ -29,16 +29,19 @@
     max-width: 100%;
     padding: 50px 0;
 }
-.col-4 img{
-    width: 25%;
+.img-product img{
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    cursor: pointer;
 }
 
-.row{
+/* .row{
     display: flex;
     align-items: center;
     flex-wrap: wrap;
     justify-content: space-around;
-}
+} */
 
 .row-2{
     justify-content: space-between;
@@ -72,4 +75,9 @@
 .page-btn span:hover{
     background: #ff523b;
     color: white;
+}
+
+ngb-rating {
+    color: #FFC107;
+    font-size: 50px;
 }
