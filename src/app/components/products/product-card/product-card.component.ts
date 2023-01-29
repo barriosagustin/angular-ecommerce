@@ -38,6 +38,6 @@ export class ProductCardComponent implements OnInit {
   getIndex(i: number) {
     console.log(i);
     this._apiService.getDataId(i).subscribe((res) => console.log(res));
-    this.router.navigate(['/product-detail']);
+    this.router.navigate(['/product-detail/', i]);
   }
 }

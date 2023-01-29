@@ -18,4 +18,10 @@ export class ApiService {
   public getDataId(id: number): Observable<Articles[]> {
     return this.http.get<Articles[]>(this.articlesUrl + '?id=' + id);
   }
+
+  public getArticleParams(page: number, limit: number): Observable<Articles[]> {
+    return this.http.get<Articles[]>(
+      this.articlesUrl + '?page=' + page + '&limit=' + limit
+    );
+  }
 }
