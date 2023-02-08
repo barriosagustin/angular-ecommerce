@@ -27,6 +27,12 @@ nav ul li{
     display: inline-block;
     margin-right: 20px;
 }
+
+#MenuItems a:hover,
+.active{
+    color: #f13e3e;
+}
+
 a{
     text-decoration: none;
     color: #555;

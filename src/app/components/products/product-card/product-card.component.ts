@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { Articles } from 'src/app/interfaces/articles';
+import { Component, OnInit, Input } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
 import { Router } from '@angular/router';
 
@@ -9,35 +8,80 @@ import { Router } from '@angular/router';
   styleUrls: ['./product-card.component.css'],
 })
 export class ProductCardComponent implements OnInit {
-  public articles: Articles = {
-    title: '',
-    category: '',
-    price: 0,
-    image: [''],
-    description: '',
-    rating: 0,
-    cod: 0,
-    id: '',
-  };
-
+  @Input() featured: boolean = false;
+  @Input() latest: boolean = false;
+  @Input() filterProduct: string = '';
+  @Input() page: number = 0;
+  limit: number = 8;
   items: any[] = [];
-
-  starRating = 3;
+  starRating = 0;
 
   constructor(private _apiService: ApiService, private router: Router) {}
 
   ngOnInit(): void {
-    this.getArticles();
+    this.findSection();
+    this.filterProducts();
+    console.log(this.filterProduct + 'prueba');
   }
 
   getArticles() {
-    this._apiService.getData().subscribe((res) => (this.items = res));
-    // console.log(this.articles.title);
+    this._apiService.getData().subscribe((res) => {
+      (this.items = res), console.log(res[0].rating);
+      this.starRating = this.items[0].rating;
+    });
+  }
+
+  getArticlesSortPrice() {
+    this._apiService.getArticleSortBy('price', 'desc').subscribe((res) => {
+      this.items = res;
+      this.starRating = this.items[0].rating;
+    });
+  }
+
+  getArticlesSortRating() {
+    this._apiService.getArticleSortBy('rating', 'desc').subscribe((res) => {
+      this.items = res;
+      this.starRating = this.items[0].rating;
+    });
   }
 
   getIndex(i: number) {
-    console.log(i);
-    this._apiService.getDataId(i).subscribe((res) => console.log(res));
+    console.log(i + 'index');
+    // this._apiService.getDataId(i).subscribe((res) => console.log(res));
     this.router.navigate(['/product-detail/', i]);
+  }
+
+  findSection() {
+    if (this.featured == true) {
+      this.getArticles();
+      console.log('entro featured');
+    }
+    if (this.latest == true) {
+      this.getArticlesSortPrice();
+      console.log('entro latest');
+    }
+  }
+
+  filterProducts() {
+    if (this.filterProduct === '1') {
+      // this.getArticles();
+      this.getArticlesPagination();
+      console.log('default sort');
+    } else if (this.filterProduct == '2') {
+      this.getArticlesSortPrice();
+      console.log('sortPrice');
+    } else if (this.filterProduct == '3') {
+      this.getArticlesSortRating();
+      console.log('sortRating');
+    }
+  }
+
+  getArticlesPagination() {
+    this._apiService
+      .getArticleParams(this.page, this.limit)
+      .subscribe((res) => {
+        this.items = res;
+        this.starRating = this.items[0].rating;
+      });
   }
 }

@@ -1,25 +1,27 @@
+<app-header [hide]="true"></app-header>
+
 <div class="small-container single-product" *ngFor="let item of articles">
     <div class="row">
         <div class="col-2">
-            <img src="{{item.image}}" width="100%" id="ProductImg">
+            <img src="{{mainImage}}" width="100%" id="ProductImg">
 
             <div class="small-img-row">
-                <div class="small-img-col">
-                    <img src="{{item.image}}" width="100%" class="small-img">
+                <div (click)="changeImage(item.image)" class="small-img-col">
+                    <img src="{{item.image}}" width="120%" class="small-img">
                 </div>
-                <div class="small-img-col">
-                    <img src="{{item.image}}" width="100%" class="small-img">
+                <div (click)="changeImage(item.image)" class="small-img-col">
+                    <img src="{{item.image}}" width="120%" class="small-img">
                 </div>
-                <div class="small-img-col">
-                    <img src="{{item.image}}" width="100%" class="small-img">
+                <div (click)="changeImage(item.image)" class="small-img-col">
+                    <img src="{{item.image}}" width="120%" class="small-img">
                 </div>
-                <div class="small-img-col">
-                    <img src="{{item.image}}" width="100%" class="small-img">
+                <div (click)="changeImage(item.image)" class="small-img-col">
+                    <img src="{{item.image}}" width="120%" class="small-img">
                 </div>
             </div>
 
         </div>
-        <div class="col-2" >
+        <div class="coll-2" >
             <p>{{item.category}}</p>
             <h1>{{item.title}}</h1>
             <h4>${{item.price}}</h4>
@@ -30,12 +32,13 @@
                 <option>L</option>
                 <option>M</option>
                 <option>S</option>
-            </select>
-            <input type="number" value="1">
-            <button mat-stroked-button (click)="addToCart()" type="button" class="btn btn-success">Add to cart</button>
+            </select><br>
+            <input type="number" value="1"> 
 
+            <button mat-stroked-button (click)="addToCart()" type="button" class="btn btn-success">Add to cart</button>
             <h3>Product Details <i class="fa fa-indent"></i></h3>
             <br>
+
             <p>{{item.description}}</p>
         </div>
     </div>
@@ -45,16 +48,16 @@
 
 <!-- title -->
 <div class="small-container">
-    <div class="row row-2">
+    <div class="roww roww-2">
         <h2>Related Products</h2>
         <p>View More</p>
     </div>
 </div>
 
 <!-- Products -->
-<div class="small-container" *ngFor="let product of products">
-    <div class="row align-items-start">
-        <div class="col-md-3">
+<div class="small-container" >
+    <div class="row" >
+        <div class="col-md-3" *ngFor="let product of products">
             <img style="width: 150px; height: 150px;" src="{{product.image}}">
             <h4>{{product.title}}</h4>
             <div class="rating">
@@ -66,6 +69,6 @@
             </div>
             <p>${{product.price}}</p>
         </div>
+        
 </div>
-
 </div>

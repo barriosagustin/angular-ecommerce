@@ -1,33 +1,17 @@
 <div class="small-container">
-    <div class="row row-2">
-        <h2>All Products</h2>
-        <select>
-            <option>Default Sort</option>
-            <option>Sort By Price</option>
-            <option>Sort By Popularity</option>
-            <option>Sort By Rating</option>
-            <option>Sort By Sale</option>
-        </select>
-    </div>
 
     <!-- <ng-template *ngFor="let item of items"> -->
         <div class="container1">
             <div class="row align-items-start">
                 <div class="col-sm-12 col-md-3 img-product"  *ngFor="let item of items; let i = index" >
-                    <a  (click)="getIndex(i +1)"><img src={{item.image}}></a>
+                    <a  (click)="getIndex(item.id)"><img src={{item.image}}></a>
                     <h4>{{item.title}}</h4>
-                        <ngb-rating  [max]="5" [(rate)]="starRating" [readonly]="true"></ngb-rating>
+                        <ngb-rating  [max]="5" [(rate)]="item.rating" [readonly]="true" class="rating"></ngb-rating>
                     <p><span> Price:</span> {{item.price}}</p>
                 </div>
   
         
     </div>
 
-    <div class="page-btn">
-        <span>1</span>
-        <span>2</span>
-        <span>3</span>
-        <span>4</span>
-        <span>&#8594;</span>
-    </div>
+
 </div>

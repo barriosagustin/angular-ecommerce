@@ -7,6 +7,9 @@ import { ApiService } from 'src/app/services/api.service';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
+  latestValue: boolean = true;
+  featuredValue: boolean = true;
+
   constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {

@@ -1,4 +1,4 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
 import { ActivatedRoute } from '@angular/router';
 import {
@@ -6,6 +6,7 @@ import {
   MatSnackBarHorizontalPosition,
   MatSnackBarVerticalPosition,
 } from '@angular/material/snack-bar';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -13,15 +14,15 @@ import {
   styleUrls: ['./product-detail.component.css'],
 })
 export class ProductDetailComponent implements OnInit {
-  @Output()
-  public hideHeader: boolean = true;
   public articles: any[] = [];
   public products: any[] = [];
+  public mainImage: string = '';
 
   idArticle: any;
 
   constructor(
     private _apiService: ApiService,
+    private _cartService: CartService,
     private aRoute: ActivatedRoute,
     private _snackBar: MatSnackBar
   ) {
@@ -36,22 +37,27 @@ export class ProductDetailComponent implements OnInit {
   }
 
   getArticleId() {
-    // console.log('hola');
     // this._apiService.getDataId(1).subscribe((res) => console.log(res));
-    this._apiService
-      .getDataId(this.idArticle)
-      .subscribe((res) => (this.articles = res));
+    this._apiService.getDataId(this.idArticle).subscribe((res) => {
+      this.articles = res;
+      this.mainImage = this.articles[0].image;
+    });
   }
 
   getArticles() {
-    this._apiService
-      .getArticleParams(1, 4)
-      .subscribe((res) => (this.products = res));
+    this._apiService.getArticleParams(1, 4).subscribe((res) => {
+      this.products = res;
+    });
   }
 
   addToCart() {
-    console.log('prueba');
+    this._cartService.addToCart(this.articles[0]);
     this.addMessage();
+    // console.log(this.articles[0]);
+  }
+
+  changeImage(url: string) {
+    this.mainImage = url;
   }
 
   addMessage() {

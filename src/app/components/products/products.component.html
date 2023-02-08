@@ -1,57 +1,34 @@
-<app-product-card></app-product-card>
+<app-header [hide]="true"></app-header>
 
-<!-- Footer -->
-<div class="footer">
-    <div class="container">
-        <div class="row">
-            <div class="footer-col-1">
-                <h3>Download Our App</h3>
-                <p>Download App for Android and ios mobile phone.</p>
-                <div class="app-logo">
-                    <img src="">
-                    <img src="">
-                </div>
-            </div>
-            <div class="footer-col-2">
-                <img src="">
-                <p>Our Purpose Is To Sustainably Make the Pleasure and Benefits of Sports Accessible to the Many.
-                </p>
-            </div>
-            <div class="footer-col-3">
-                <h3>Useful Links</h3>
-                <ul>
-                    <li>Coupons</li>
-                    <li>Blog Post</li>
-                    <li>Return Policy</li>
-                    <li>Join Affiliate</li>
-                </ul>
-            </div>
-            <div class="footer-col-4">
-                <h3>Follow Us</h3>
-                <ul>
-                    <li>Facebook</li>
-                    <li>Twitter</li>
-                    <li>Instagram</li>
-                    <li>Youtube</li>
-                </ul>
-            </div>
-        </div>
-        <hr>
-        <p class="copyright">Copyright 2020 - Samwit Adhikary</p>
-    </div>
+<div class="roww roww2">
+    <h2>All Products</h2>
+    <mat-form-field>
+      <mat-label>Default Sort</mat-label>
+      <mat-select  [(ngModel)]="filter" (click)="getValue()">
+        <mat-option *ngFor="let filt of filts" [value]="filt.value">
+          {{filt.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
 </div>
 
-<!-- javascript -->
+  <div *ngIf="filter == '1'">
+    <app-product-card [filterProduct]="filter" [page]="pageProducts"></app-product-card>
+  </div>
+  <div *ngIf="filter == '2'">
+    <app-product-card [filterProduct]="filter"></app-product-card>
+  </div>
+  <div *ngIf="filter == '3'">
+    <app-product-card [filterProduct]="filter"></app-product-card>
+  </div>
 
-<script>
-    var MenuItems = document.getElementById("MenuItems");
-    MenuItems.style.maxHeight = "0px";
-    function menutoggle() {
-        if (MenuItems.style.maxHeight == "0px") {
-            MenuItems.style.maxHeight = "200px"
-        }
-        else {
-            MenuItems.style.maxHeight = "0px"
-        }
-    }
-</script>
+<div class="space">
+<div class="page-btn">
+    <a (click)="getPage(1)"><span>1</span></a>
+    <a (click)="getPage(2)"><span>2</span></a>
+    <a (click)="getPage(3)"><span>3</span></a>
+    <a (click)="getPage(4)"><span>4</span></a>
+    <span>&#8594;</span>
+</div>
+</div>

@@ -1,1 +1,21 @@
-<p>contact works!</p>
+<app-header [hide]="false"></app-header>
+
+
+<form [formGroup]="form" (ngSubmit)="send()">
+    <div class="container">
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Name</label>
+      <input type="text" class="form-control" formControlName="name" id="exampleInputEmail1" aria-describedby="emailHelp" >
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">LastName</label>
+      <input type="text" class="form-control" formControlName="lastname" id="exampleInputPassword1">
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Let us know your opinion</label>
+        <textarea class="form-control" formControlName="textarea" id="exampleFormControlTextarea1" rows="3"></textarea>
+      </div>
+
+    <button type="submit" class="btn btn-primary">Send</button>
+</div>
+  </form>

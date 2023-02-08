@@ -25,15 +25,20 @@
 .rating .fa{
     color: #ff523b;
 }
+
+
 .col-2 img{
     max-width: 100%;
     padding: 50px 0;
 }
+
+
 .img-product img{
-    width: 150px;
-    height: 150px;
+    width: 250px;
+    height: 300px;
     object-fit: cover;
     cursor: pointer;
+    filter: grayscale(0);
 }
 
 /* .row{
@@ -78,6 +83,6 @@
 }
 
 ngb-rating {
-    color: #FFC107;
-    font-size: 50px;
+        color: #ff523b;
+        font-size: 25px;
 }

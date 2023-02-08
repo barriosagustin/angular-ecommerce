@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,6 +21,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
+import { FooterComponent } from './components/footer/footer.component';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -30,6 +34,7 @@ import { MatButtonModule } from '@angular/material/button';
     HeaderComponent,
     ProductCardComponent,
     ProductDetailComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,6 +46,9 @@ import { MatButtonModule } from '@angular/material/button';
     MatSlideToggleModule,
     BrowserAnimationsModule,
     MatButtonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

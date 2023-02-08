@@ -27,6 +27,14 @@ p{
     flex-wrap: wrap;
     justify-content: space-around;
 }
+
+.roww{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
 .col-2{
     flex-basis: 50%;
     min-width: 300px;
@@ -239,6 +247,12 @@ ul{
     justify-content: space-between;
     margin: 100px auto 50px;
 }
+
+.roww-2{
+    justify-content: space-between;
+    margin: 100px auto 50px;
+}
+
 select{
     border: 1px solid #ff523b;
     padding: 5px;
@@ -412,6 +426,35 @@ form a{
     transform: translateX(100px);
     transition: transform 1s;
 }
+
+.space{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.page-btn{
+    margin: 0 auto 80px;
+}
+.page-btn span{
+    display: inline-block;
+    border: 1px solid #ff523b;
+    margin-left: 10px;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    cursor: pointer;
+}
+.page-btn span:hover{
+    background: #ff523b;
+    color: white;
+}
+
+.example-additional-selection {
+    opacity: 0.75;
+    font-size: 0.75em;
+  }
 
 /* Media query for menu */
 @media only screen and (max-width: 800px){
