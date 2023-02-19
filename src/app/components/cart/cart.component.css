@@ -1,6 +1,6 @@
 *{
     margin: 0;
-    padding: 0;
+    /* padding: 0; */
     box-sizing: border-box;
 }
 .cart-page{
@@ -52,4 +52,22 @@ td:last-child{
 }
 th:last-child{
     text-align: right;
+}
+.button{
+    margin-top: 60px;
+    display: flex;
+    justify-content: right;
+    align-items: right;
+}
+
+.center{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.center .btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

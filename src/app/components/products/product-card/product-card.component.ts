@@ -21,7 +21,9 @@ export class ProductCardComponent implements OnInit {
   ngOnInit(): void {
     this.findSection();
     this.filterProducts();
-    console.log(this.filterProduct + 'prueba');
+    if (this.page != 0) {
+      this.getArticlesPagination();
+    }
   }
 
   getArticles() {
@@ -54,18 +56,16 @@ export class ProductCardComponent implements OnInit {
   findSection() {
     if (this.featured == true) {
       this.getArticles();
-      console.log('entro featured');
     }
     if (this.latest == true) {
       this.getArticlesSortPrice();
-      console.log('entro latest');
     }
   }
 
   filterProducts() {
     if (this.filterProduct === '1') {
-      // this.getArticles();
-      this.getArticlesPagination();
+      this.getArticles();
+      // this.getArticlesPagination();
       console.log('default sort');
     } else if (this.filterProduct == '2') {
       this.getArticlesSortPrice();

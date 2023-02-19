@@ -11,7 +11,7 @@
                     <li><a routerLink="/contact" [routerLinkActive]="['active']">Contact</a></li>
                 </ul>
             </nav>
-            <a routerLink="cart">
+            <a routerLink="/cart">
                 <img  src="/assets/img/cart.png" width="30px" height="30px" class="menu-icon">
             </a>
             </div>
@@ -41,8 +41,10 @@
                 <li><a routerLink="/contact" [routerLinkActive]="['active']">Contact</a></li>
             </ul>
         </nav>
-        <a routerLink="/cart">
-            <img  src="/assets/img/cart.png" width="30px" height="30px" class="menu-icon">
+        <a routerLink="/cart" > 
+            <img  src="/assets/img/cart.png" width="30px" height="30px" class="menu-icon" ><span>{{totalItem}}</span>
+            <!-- <div style="font-size: 20px;" class="badge bg-danger">{{totalItem}}</div> -->
+
         </a>
     </div>
 </div>

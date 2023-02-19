@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-header',
@@ -11,12 +12,11 @@ export class HeaderComponent implements OnInit {
   public hide: boolean = false;
   public totalItem: number = 0;
 
-  constructor(private _apiService: ApiService) {}
+  constructor(private _cartService: CartService) {}
 
   ngOnInit(): void {
-    this._apiService.getData().subscribe((res) => {
+    this._cartService.getProduct().subscribe((res) => {
       this.totalItem = res.length;
     });
-    console.log(this.totalItem + 'total');
   }
 }
