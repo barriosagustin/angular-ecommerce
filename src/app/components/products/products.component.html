@@ -14,7 +14,7 @@
 </div>
 
   <div *ngIf="filter == '1'">
-    <app-product-card [filterProduct]="filter" [page]="pageProducts"></app-product-card>
+    <app-product-card [filterProduct]="filter"></app-product-card>
   </div>
   <div *ngIf="filter == '2'">
     <app-product-card [filterProduct]="filter"></app-product-card>
@@ -23,7 +23,7 @@
     <app-product-card [filterProduct]="filter"></app-product-card>
   </div>
 
-<div class="space">
+<!-- <div class="space">
 <div class="page-btn">
     <a (click)="getPage(1)"><span>1</span></a>
     <a (click)="getPage(2)"><span>2</span></a>
@@ -31,4 +31,4 @@
     <a (click)="getPage(4)"><span>4</span></a>
     <span>&#8594;</span>
 </div>
-</div>
+</div> -->

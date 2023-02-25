@@ -5,13 +5,13 @@
         <div class="small-container">
             <div class="row">
                 <div class="col-3">
-                    <img src="/assets/img/category-1.jpg">
+                    <img src="./assets/img/category-1.jpg">
                 </div>  
                 <div class="col-3">
-                    <img src="/assets/img/category-2.jpg">
+                    <img src="./assets/img/category-2.jpg">
                 </div>
                 <div class="col-3">
-                    <img src="/assets/img/category-3.jpg">
+                    <img src="./assets/img/category-3.jpg">
                 </div>
             </div>
         </div>
@@ -20,14 +20,14 @@
     <!-- Featured Products -->
     <h2 class="title">Featured Products</h2>
     <div *ngIf="featuredValue">
-    <app-product-card [featured]="featuredValue"></app-product-card>
+    <app-product-card [featured]="featuredValue" [productsPage]="pagination"></app-product-card>
 
 
         <!-- Latest Products -->
 
         <h2 class="title">Latest Products</h2>
        <div *ngIf="latestValue">
-        <app-product-card [latest]="latestValue"></app-product-card>
+        <app-product-card [latest]="latestValue" [productsPage]="pagination"></app-product-card>
     </div>
     <!-- </div> -->
 
@@ -36,7 +36,7 @@
         <div class="small-container">
             <div class="row">
                 <div class="col-2">
-                    <img src="/assets/img/exclusive.png" class="offer-img">
+                    <img src="./assets/img/exclusive.png" class="offer-img">
                 </div>
                 <div class="col-2">
                     <p>Exclusively Available on RedStore</p>
@@ -64,7 +64,7 @@
                         <i class="fa fa-star"></i>
                         <i class="fa fa-star"></i>
                     </div>
-                    <img src="/assets/img/user-3.png">
+                    <img src="./assets/img/user-3.png">
                     <h3>Sean Parker</h3>
                 </div>
                 <div class="col-3">
@@ -78,7 +78,7 @@
                         <i class="fa fa-star"></i>
                         <i class="fa fa-star"></i>
                     </div>
-                    <img src="/assets/img/user-2.png">
+                    <img src="./assets/img/user-2.png">
                     <h3>Mike Smith</h3>
                 </div>
                 <div class="col-3">
@@ -92,7 +92,7 @@
                         <i class="fa fa-star"></i>
                         <i class="fa fa-star"></i>
                     </div>
-                    <img src="/assets/img/user-1.png">
+                    <img src="./assets/img/user-1.png">
                     <h3>Mabel Joe</h3>
                 </div>
             </div>

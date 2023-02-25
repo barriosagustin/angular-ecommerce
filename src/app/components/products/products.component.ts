@@ -24,12 +24,10 @@ export class ProductsComponent implements OnInit {
 
   getValue() {
     this.filterElection = this.filter;
-    console.log(this.filter);
   }
 
-  getPage(page: number) {
-    this.pageProducts = page;
-    console.log(this.pageProducts);
-    this.getValue();
-  }
+  // getPage(page: number) {
+  //   this.pageProducts = page;
+  //   console.log(this.pageProducts);
+  // }
 }

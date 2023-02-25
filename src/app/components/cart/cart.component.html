@@ -17,8 +17,7 @@
                         <p>{{product.title}}</p>
                         <small>Price: ${{product.price}}</small>
                         <br>
-                        <!-- <a href="">Remove</a> -->
-                        <button (click)="removeItem(product)"> <mat-icon>delete</mat-icon></button> 
+                        <a (click)="removeItem(product)"> <mat-icon class="delete">delete</mat-icon></a> 
                     </div>
                 </div>
             </td>
@@ -33,7 +32,6 @@
             <tr>
                 <td>Total</td>
                 <td>${{totalPrice}}</td>
-                <!-- <td>    <mat-icon>delete</mat-icon>    </td> -->
             </tr>
         </table>
 
@@ -49,8 +47,17 @@
 </ng-container>
 
 <ng-container *ngIf="products.length == 0">
-    <div class="center">
-    <h1>Your cart is empty</h1>
+    <div class="container" style="margin-top: 33px;">
+     <div class="row" style="text-align: center;">
+    
+        <div col-lg-12>
+            <img class="img" src="/assets/img/empty-image.png" alt="empty cart">
+            <h4><span>Your cart is empty</span></h4>
+            <p>Looks like you have not added anything to your cart. Go <br> ahead & explore top categories.</p> 
+        </div>
+        <div col-md-6>
     <button type="button" routerLink="/products" class="btn btn-primary">Choose products</button>
+</div>
+</div>
 </div>
 </ng-container>

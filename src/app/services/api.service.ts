@@ -25,6 +25,25 @@ export class ApiService {
     );
   }
 
+  public getArticleAllParams(
+    sortBy: string,
+    order: string,
+    page: number,
+    limit: number
+  ): Observable<Articles[]> {
+    return this.http.get<Articles[]>(
+      this.articlesUrl +
+        '?sortBy=' +
+        sortBy +
+        '&order=' +
+        order +
+        '&page=' +
+        page +
+        '&limit=' +
+        limit
+    );
+  }
+
   public getArticleSortBy(
     param: string,
     order: string

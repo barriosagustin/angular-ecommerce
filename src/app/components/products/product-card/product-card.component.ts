@@ -11,7 +11,10 @@ export class ProductCardComponent implements OnInit {
   @Input() featured: boolean = false;
   @Input() latest: boolean = false;
   @Input() filterProduct: string = '';
-  @Input() page: number = 0;
+  @Input() productsPage: boolean = true;
+  sortBy: string = '';
+  order: string = '';
+  pageSelected: number = 0;
   limit: number = 8;
   items: any[] = [];
   starRating = 0;
@@ -21,44 +24,54 @@ export class ProductCardComponent implements OnInit {
   ngOnInit(): void {
     this.findSection();
     this.filterProducts();
-    if (this.page != 0) {
-      this.getArticlesPagination();
-    }
   }
 
   getArticles() {
-    this._apiService.getData().subscribe((res) => {
-      (this.items = res), console.log(res[0].rating);
-      this.starRating = this.items[0].rating;
-    });
+    this.pageSelected = 1;
+    this._apiService
+      .getArticleParams(this.pageSelected, this.limit)
+      .subscribe((res) => {
+        this.items = res;
+        this.starRating = this.items[0].rating;
+      });
   }
 
   getArticlesSortPrice() {
-    this._apiService.getArticleSortBy('price', 'desc').subscribe((res) => {
-      this.items = res;
-      this.starRating = this.items[0].rating;
-    });
+    this.pageSelected = 1;
+    this._apiService
+      .getArticleAllParams('price', 'desc', this.pageSelected, this.limit)
+      .subscribe((res) => {
+        this.items = res;
+        this.starRating = this.items[0].rating;
+      });
   }
 
   getArticlesSortRating() {
-    this._apiService.getArticleSortBy('rating', 'desc').subscribe((res) => {
-      this.items = res;
-      this.starRating = this.items[0].rating;
-    });
+    this.pageSelected = 1;
+    this._apiService
+      .getArticleAllParams('rating', 'desc', this.pageSelected, this.limit)
+      .subscribe((res) => {
+        this.items = res;
+        this.starRating = this.items[0].rating;
+      });
   }
 
   getIndex(i: number) {
-    console.log(i + 'index');
-    // this._apiService.getDataId(i).subscribe((res) => console.log(res));
     this.router.navigate(['/product-detail/', i]);
   }
 
   findSection() {
     if (this.featured == true) {
-      this.getArticles();
+      this.pageSelected = 1;
+      this.limit = 8;
+      this.getArticlesPagination();
     }
     if (this.latest == true) {
-      this.getArticlesSortPrice();
+      this.sortBy = 'rating';
+      this.order = 'desc';
+      this.pageSelected = 1;
+      this.limit = 8;
+      this.getArticlesAllParams();
     }
   }
 
@@ -66,22 +79,38 @@ export class ProductCardComponent implements OnInit {
     if (this.filterProduct === '1') {
       this.getArticles();
       // this.getArticlesPagination();
-      console.log('default sort');
     } else if (this.filterProduct == '2') {
       this.getArticlesSortPrice();
-      console.log('sortPrice');
     } else if (this.filterProduct == '3') {
       this.getArticlesSortRating();
-      console.log('sortRating');
     }
   }
 
   getArticlesPagination() {
     this._apiService
-      .getArticleParams(this.page, this.limit)
+      .getArticleParams(this.pageSelected, this.limit)
       .subscribe((res) => {
         this.items = res;
         this.starRating = this.items[0].rating;
       });
+  }
+
+  getArticlesAllParams() {
+    this._apiService
+      .getArticleAllParams(
+        this.sortBy,
+        this.order,
+        this.pageSelected,
+        this.limit
+      )
+      .subscribe((res) => {
+        this.items = res;
+        this.starRating = this.items[0].rating;
+      });
+  }
+
+  getPage(page: number) {
+    this.pageSelected = page;
+    this.getArticlesPagination();
   }
 }

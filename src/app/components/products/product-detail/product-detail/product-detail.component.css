@@ -117,6 +117,12 @@ transition: transform 0.5s;
     margin: 25px 0;
 }
 
+
+ngb-rating {
+    color: #ff523b;
+    font-size: 23px;
+}
+
 select{
     border: 1px solid #ff523b;
     padding: 5px;

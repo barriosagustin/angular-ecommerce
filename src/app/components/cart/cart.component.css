@@ -3,6 +3,12 @@
     /* padding: 0; */
     box-sizing: border-box;
 }
+
+.img{
+    width: 200px;
+    height: 200px;
+}
+
 .cart-page{
     margin: 80px auto;
 }
@@ -70,4 +76,8 @@ th:last-child{
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.delete{
+    cursor: pointer;
 }

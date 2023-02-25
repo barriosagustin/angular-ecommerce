@@ -9,6 +9,7 @@ import { ApiService } from 'src/app/services/api.service';
 export class HomeComponent implements OnInit {
   latestValue: boolean = true;
   featuredValue: boolean = true;
+  pagination: boolean = false;
 
   constructor(private apiService: ApiService) {}
 

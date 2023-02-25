@@ -60,12 +60,8 @@
         <div class="col-md-3" *ngFor="let product of products">
             <img style="width: 150px; height: 150px;" src="{{product.image}}">
             <h4>{{product.title}}</h4>
-            <div class="rating">
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star-o"></i>
+            <div>
+                <ngb-rating  [max]="5" [(rate)]="product.rating" [readonly]="true" class="rating"></ngb-rating>
             </div>
             <p>${{product.price}}</p>
         </div>

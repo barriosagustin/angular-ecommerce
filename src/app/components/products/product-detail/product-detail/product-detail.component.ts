@@ -17,6 +17,7 @@ export class ProductDetailComponent implements OnInit {
   public articles: any[] = [];
   public products: any[] = [];
   public mainImage: string = '';
+  public starRating: number = 0;
 
   idArticle: any;
 
@@ -33,13 +34,11 @@ export class ProductDetailComponent implements OnInit {
   ngOnInit(): void {
     this.getArticleId();
     this.getArticles();
-    // console.log(this.idArticle);
   }
 
   getArticleId() {
-    // this._apiService.getDataId(1).subscribe((res) => console.log(res));
     this._apiService.getDataId(this.idArticle).subscribe((res) => {
-      this.articles = res;
+      this.articles[0] = res[0];
       this.mainImage = this.articles[0].image;
     });
   }
@@ -47,13 +46,13 @@ export class ProductDetailComponent implements OnInit {
   getArticles() {
     this._apiService.getArticleParams(1, 4).subscribe((res) => {
       this.products = res;
+      this.starRating = res[0].rating;
     });
   }
 
   addToCart() {
     this._cartService.addToCart(this.articles[0]);
     this.addMessage();
-    // console.log(this.articles[0]);
   }
 
   changeImage(url: string) {
