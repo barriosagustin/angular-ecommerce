@@ -24,6 +24,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { FooterComponent } from './components/footer/footer.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
+import { CheckoutComponent } from './components/checkout/checkout.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -36,6 +39,7 @@ import { MatIconModule } from '@angular/material/icon';
     ProductCardComponent,
     ProductDetailComponent,
     FooterComponent,
+    CheckoutComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,6 +55,8 @@ import { MatIconModule } from '@angular/material/icon';
     ReactiveFormsModule,
     MatSelectModule,
     MatIconModule,
+    MatFormFieldModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

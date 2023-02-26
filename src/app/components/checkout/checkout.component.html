@@ -1,0 +1,66 @@
+    <div class="title" style="text-align: center; margin-top: 20px;">
+    <h1 style="color: black; font-size: 35px;">Final step, make the payment</h1>
+    <p>To finalize your subscription, kindly complete your <br>payment using a valid credit card.</p>
+    </div>
+    <div class="container" style="width:100%; align-items: left;">
+        <div class="row">
+            <div class="col-md-6">
+    <form class="form-control" style="margin-bottom: 5px; height: 23rem;">
+    <div class="row">
+        <div class="col-md-9">
+    <div class="mb-3">
+        <i class="fa fa-credit-card"></i> <label for="cardNumber" class="form-label"><i class="bi bi-credit-card"></i> Card number</label>
+      <i class="bi bi-credit-card"></i><input class="bi bi-credit-card" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="9870 8880 8880 8880">
+      <div id="emailHelp" class="form-text"></div>
+    </div>
+</div>
+</div>
+
+<!-- <div><i class="fa-solid fa-credit-card"></i></div> -->
+<div class="row">
+    <div class="col-md-6">
+    <label for="cardNumber" class="form-label"> Expiry</label>
+    <input style="width: 200px;" type="text" class="form-control" id="exampleCard" aria-describedby="emailHelp" placeholder="mm/yy">
+</div>
+<div class="col-md-6">
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">CVC</label>
+      <input style="width: 200px;" type="password" class="form-control" id="exampleInputPassword1" placeholder="X X X">
+    </div>
+</div>
+<div class="row">
+<div class="col-md-9">
+    <label for="discountCode" class="form-label"><i class="bi bi-credit-card"></i> Discount code</label>
+    <input   type="text" class="form-control" id="discountCode" aria-describedby="discountcode" placeholder="C00-20-OFF" >
+</div>
+<div class="col-md-3"> 
+    <button  style="margin-top: 30px;" class="btn btn-secondary">Apply</button>
+</div>
+
+
+</div>
+</div>
+    <button routerLink="/home" style="margin-top: 10px; width: 120px; height: 45px;" type="submit" class="btn btn-primary">Pay now</button>
+  </form>
+</div>
+<div class="col-md-6">
+  <div class="card text-bg-light mb-3" style="max-width:35rem; height: 23rem;">
+    <h2>You've to pay.</h2>
+    <div class="card-body">
+      <h5 class="card-title" style="font-size: 22px;">$ {{totalPrice}}</h5>
+    <h3 class="card-text"> <i class="fa fa-check"></i>Payment & invoice</h3>
+      <p class="card-text">We'll worry about all the transactions and payment. You can sit back and relax while you <br> make your clients happy.</p>
+      <h3 class="card-text"> <i class="fa fa-check"></i>Discounts & Offers</h3>
+      <p class="card-text">You'll be provided with some offers from time to time and have acces to all the perks and benefits.</p>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+<!-- <h1 mat-dialog-title>Dialog with elements</h1>
+<div mat-dialog-content>This dialog showcases the title, close, content and actions elements.</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Close</button>
+</div> -->
+<!-- <button mat-button (click)="openDialog()">Launch dialog</button> -->
