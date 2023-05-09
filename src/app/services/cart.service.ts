@@ -7,6 +7,7 @@ import { BehaviorSubject } from 'rxjs';
 export class CartService {
   public cartItemList: any = [];
   public productList = new BehaviorSubject<any>([]);
+  private _quantity: number = 1;
 
   constructor() {}
   getProduct() {
@@ -18,27 +19,47 @@ export class CartService {
     this.productList.next(product);
   }
 
+  getQuantity(): number {
+    return this._quantity;
+  }
+
+  setQuantity(quantity: number) {
+    this._quantity = quantity;
+  }
+
   addToCart(product: any) {
-    this.cartItemList.push(product);
+    let alreadyExists = false;
+    this.cartItemList.forEach((item: any, index: any) => {
+      if (item.id === product.id) {
+        alreadyExists = true;
+        item.quantity += 1;
+        this.cartItemList[index] = item;
+        console.log(this.cartItemList);
+      }
+    });
+    if (!alreadyExists) {
+      product.quantity = 1;
+      this.cartItemList.push(product);
+      console.log(this.cartItemList);
+    }
     this.productList.next(this.cartItemList);
-    // this.getTotalPrice();
-    console.log(this.cartItemList);
   }
 
   getTotalPrice(): number {
     let grandTotal = 0;
     this.cartItemList.map((a: any) => {
-      grandTotal += a.price;
+      grandTotal += a.price * a.quantity;
     });
     return grandTotal;
   }
 
   removeCartItem(product: any) {
-    this.cartItemList.map((a: any, index: any) => {
-      if (product.id === a.id) {
-        this.cartItemList.splice(index, 1);
-      }
-    });
+    const index = this.cartItemList.findIndex(
+      (item: any) => item.id === product.id
+    );
+    if (index !== -1) {
+      this.cartItemList.splice(index, 1);
+    }
     this.productList.next(this.cartItemList);
   }
 

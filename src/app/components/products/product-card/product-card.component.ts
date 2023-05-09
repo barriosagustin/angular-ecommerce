@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-product-card',
@@ -10,6 +11,7 @@ import { Router } from '@angular/router';
 export class ProductCardComponent implements OnInit {
   @Input() featured: boolean = false;
   @Input() latest: boolean = false;
+  @Input() productDetail: boolean = false;
   @Input() filterProduct: string = '';
   @Input() productsPage: boolean = true;
   sortBy: string = '';
@@ -19,7 +21,11 @@ export class ProductCardComponent implements OnInit {
   items: any[] = [];
   starRating = 0;
 
-  constructor(private _apiService: ApiService, private router: Router) {}
+  constructor(
+    private _apiService: ApiService,
+    private router: Router,
+    private location: Location
+  ) {}
 
   ngOnInit(): void {
     this.findSection();
@@ -57,7 +63,10 @@ export class ProductCardComponent implements OnInit {
   }
 
   getIndex(i: number) {
-    this.router.navigate(['/product-detail/', i]);
+    // this.router.navigate(['/product-detail/', i]);
+    const url = this.router.createUrlTree(['/product-detail', i]);
+    this.location.go(url.toString());
+    location.reload();
   }
 
   findSection() {
@@ -72,6 +81,11 @@ export class ProductCardComponent implements OnInit {
       this.pageSelected = 1;
       this.limit = 8;
       this.getArticlesAllParams();
+    }
+    if (this.productDetail) {
+      this.pageSelected = 1;
+      this.limit = 4;
+      this.getArticlesPagination();
     }
   }
 

@@ -18,6 +18,8 @@ export class ProductDetailComponent implements OnInit {
   public products: any[] = [];
   public mainImage: string = '';
   public starRating: number = 0;
+  public selectedSize: string = '';
+  public quantity: string = '';
 
   idArticle: any;
 
@@ -57,6 +59,17 @@ export class ProductDetailComponent implements OnInit {
 
   changeImage(url: string) {
     this.mainImage = url;
+  }
+
+  onSelectedSize(value: string): void {
+    this.selectedSize = value;
+    console.log(this.selectedSize);
+  }
+
+  onSelectedQuantity(value: string): void {
+    this.quantity = value;
+    this._cartService.setQuantity(parseInt(this.quantity, 10));
+    console.log(this.quantity);
   }
 
   addMessage() {

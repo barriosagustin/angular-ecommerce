@@ -27,9 +27,10 @@
 .single-product input{
     width: 50px;
     height: 40px;
-    padding-left: 10px;
+    padding-left: 18px;
+    padding-bottom: 4px;
     font-size: 20px;
-    margin-left: 10px;
+    margin-left: 15px;
     border: 1px solid #ff523b;
     margin-right: 10px;
 }
@@ -158,3 +159,21 @@ select:focus{
 mat-form-field {
     margin-right: 12px;
   }
+
+
+.both{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: inherit;
+    flex-wrap: wrap;
+    align-items: baseline;
+}
+
+#btn-product{
+    width:250px;
+}
+
+.button-product{
+    width: 80px;;
+    margin-top: 20px;
+}

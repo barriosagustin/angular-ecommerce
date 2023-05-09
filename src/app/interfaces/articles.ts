@@ -7,4 +7,5 @@ export interface Articles {
   rating: number;
   cod: number;
   id: string;
+  quantity: number;
 }

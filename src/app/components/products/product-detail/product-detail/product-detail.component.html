@@ -25,19 +25,21 @@
             <p>{{item.category}}</p>
             <h1>{{item.title}}</h1>
             <h4>${{item.price}}</h4>
-            <select>
-                <option>Select Size</option>
+            <div class="both">
+            <select #sizes (change)="onSelectedSize(sizes.value)">
+                <option default>Select Size</option>
                 <option>XXL</option>
                 <option>XL</option>
                 <option>L</option>
                 <option>M</option>
                 <option>S</option>
             </select><br>
-            <input type="number" value="1"> 
-
-            <button mat-stroked-button (click)="addToCart()" type="button" class="btn btn-success">Add to cart</button>
+            <input #quantity (change)="onSelectedQuantity(quantity.value)" type="number" value="1"> 
+        </div>
+            <div class="button-product">
+            <button mat-stroked-button (click)="addToCart()" type="button" id="btn-product" class="btn btn-success">Add to cart</button>
+            </div>
             <h3>Product Details <i class="fa fa-indent"></i></h3>
-            <br>
 
             <p>{{item.description}}</p>
         </div>
@@ -55,7 +57,10 @@
 </div>
 
 <!-- Products -->
-<div class="small-container" >
+
+
+<app-product-card [productDetail]="true"></app-product-card>
+<!-- <div class="small-container" >
     <div class="row" >
         <div class="col-md-3" *ngFor="let product of products">
             <img style="width: 150px; height: 150px;" src="{{product.image}}">
@@ -67,4 +72,4 @@
         </div>
         
 </div>
-</div>
+</div> -->
