@@ -8,4 +8,5 @@ export interface Articles {
   cod: number;
   id: string;
   quantity: number;
+  size:string;
 }

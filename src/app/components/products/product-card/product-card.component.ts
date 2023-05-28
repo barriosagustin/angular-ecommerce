@@ -1,7 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input,OnChanges, Output, EventEmitter } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
-import { Router } from '@angular/router';
+import { Router,ActivatedRoute,ParamMap } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { Location } from '@angular/common';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-product-card',
@@ -20,17 +22,21 @@ export class ProductCardComponent implements OnInit {
   limit: number = 8;
   items: any[] = [];
   starRating = 0;
+  newId = '';
 
   constructor(
     private _apiService: ApiService,
+    private _cartService: CartService,
     private router: Router,
-    private location: Location
+    private location: Location,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
     this.findSection();
     this.filterProducts();
   }
+
 
   getArticles() {
     this.pageSelected = 1;
@@ -62,12 +68,21 @@ export class ProductCardComponent implements OnInit {
       });
   }
 
+  // getIndex(i: number) {
+  //   // this.router.navigate(['/product-detail/', i]);
+  //   const url = this.router.createUrlTree(['/product-detail', i]);
+  //   this.location.go(url.toString());
+  //   location.reload();
+  // }
+
   getIndex(i: number) {
-    // this.router.navigate(['/product-detail/', i]);
-    const url = this.router.createUrlTree(['/product-detail', i]);
-    this.location.go(url.toString());
-    location.reload();
-  }
+    const url = `/product-detail/${i}`;
+    this.router.navigateByUrl(url);
+    this.router.navigate(['/product-detail', i], { replaceUrl: true });
+    this._cartService.setNewId(i.toString());
+    this.newId = this._cartService.getNewId()
+
+  }  
 
   findSection() {
     if (this.featured == true) {

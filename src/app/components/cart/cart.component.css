@@ -73,6 +73,10 @@ th:last-child{
     align-items: right;
 }
 
+.button-class{
+    margin-top: 22px
+}
+
 .center{
     display: flex;
     align-items: center;

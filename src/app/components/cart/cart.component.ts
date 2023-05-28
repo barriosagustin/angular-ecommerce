@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { of,Observable } from 'rxjs';
 import { CartService } from 'src/app/services/cart.service';
 
 @Component({
@@ -8,31 +9,41 @@ import { CartService } from 'src/app/services/cart.service';
 })
 export class CartComponent implements OnInit {
   products: any[] = [];
+  cartItems: any[] = [];
   public totalPrice!: number;
-
-  quantity: number = 0;
+  quantity: any;
+  quantity1: any;
+  size$: Observable<any> = of('')
 
   constructor(private _cartService: CartService) {}
 
   ngOnInit(): void {
-    this.getProducts();
+    // this.getProducts();
+    this.getLocalStorage();
     this.getPrice();
+  }
+
+  getLocalStorage(){
+    this._cartService.productList.subscribe(item =>{
+      this.cartItems = item;
+    })
   }
 
   getProducts() {
     this._cartService.getProduct().subscribe((res) => {
       this.products = res;
     });
-    this.getQuantity();
+    this.getSize();
   }
 
   getPrice() {
     this.totalPrice = this._cartService.getTotalPrice();
   }
 
-  getQuantity() {
-    this.quantity = this._cartService.getQuantity();
-    console.log(this.quantity);
+  getSize(){
+  this._cartService.getSize().subscribe((res:any) =>{
+    this.size$ = res
+  });
   }
 
   removeItem(product: any) {
@@ -45,5 +56,6 @@ export class CartComponent implements OnInit {
     this._cartService.removeAllCart();
     this.totalPrice = 0;
     this.quantity = 1;
+    this._cartService.clearCartLocalStorage();
   }
 }

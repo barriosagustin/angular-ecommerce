@@ -1,10 +1,10 @@
 <app-header [hide]="true"></app-header>
 
-<div class="small-container single-product" *ngFor="let item of articles">
+<div class="small-container single-product" *ngFor="let item of singleProduct">
     <div class="row">
         <div class="col-2">
-            <img src="{{mainImage}}" width="100%" id="ProductImg">
-
+            <img src="{{item.image}}" width="100%" id="ProductImg">
+<!-- 
             <div class="small-img-row">
                 <div (click)="changeImage(item.image)" class="small-img-col">
                     <img src="{{item.image}}" width="120%" class="small-img">
@@ -18,7 +18,7 @@
                 <div (click)="changeImage(item.image)" class="small-img-col">
                     <img src="{{item.image}}" width="120%" class="small-img">
                 </div>
-            </div>
+            </div> -->
 
         </div>
         <div class="coll-2" >
@@ -34,7 +34,7 @@
                 <option>M</option>
                 <option>S</option>
             </select><br>
-            <input #quantity (change)="onSelectedQuantity(quantity.value)" type="number" value="1"> 
+            <input #quantity (change)="onSelectedQuantity(quantity.value)" type="number" value="0"> 
         </div>
             <div class="button-product">
             <button mat-stroked-button (click)="addToCart()" type="button" id="btn-product" class="btn btn-success">Add to cart</button>
@@ -59,7 +59,7 @@
 <!-- Products -->
 
 
-<app-product-card [productDetail]="true"></app-product-card>
+<app-product-card [productDetail]="true" ></app-product-card>
 <!-- <div class="small-container" >
     <div class="row" >
         <div class="col-md-3" *ngFor="let product of products">

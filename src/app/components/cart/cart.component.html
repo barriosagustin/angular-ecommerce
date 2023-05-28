@@ -1,7 +1,7 @@
 <app-header [hide]="true"></app-header>
 
 <!-- Cart items details -->
-<ng-container *ngIf="products.length != 0">
+<ng-container *ngIf="cartItems.length != 0">
 <div class="small-container cart-page">
     <table>
         <tr>
@@ -10,26 +10,30 @@
             <th>Quantity</th>
             <th>Subtotal</th>
         </tr>
-        <tr *ngFor="let product of products; let i = index">
+        <tr *ngFor="let item of cartItems; let i = index">
             <td >
                 <div class="cart-info">
-                    <img src="{{product.image}}">
+                    <img src="{{item.image}}">
                     <div>
-                        <p>{{product.title}}</p>
-                        <small>Price: ${{product.price}}</small>
+                        <p>{{item.title}}</p>
+                        <small>Price: ${{item.price}}</small>
                         <br>
-                        <a (click)="removeItem(product)"> <mat-icon class="delete">delete</mat-icon></a> 
+                        <a (click)="removeItem(item)"> <mat-icon class="delete">delete</mat-icon></a> 
                     </div>
                 </div>
             </td>
             <td>
-                <p>xxl</p>
+                <p>{{item.size}}</p>
             </td>
             <td >
                 <!-- <p>{{product.quantity}}</p>   -->
-                <p>{{quantity}}</p>
+                <p>{{item.quantity}}</p>
             </td>
-            <td>${{product.price * quantity}}</td>
+            <td>
+                <ng-container>
+                ${{ item.price * item.quantity }}
+                  </ng-container>
+             </td>
         </tr>
     </table>
     <div class="total-price">
@@ -51,7 +55,7 @@
 </div>
 </ng-container>
 
-<ng-container *ngIf="products.length == 0">
+<ng-container *ngIf="cartItems.length == 0">
     <div class="container" style="text-align: center; margin-top: 10px; margin-bottom: 10px;">
      <div class="row" >
         <div class="col-lg-12">
@@ -59,7 +63,7 @@
             <h4 style="font-size: 40px; color: black;">Your cart is empty</h4>
             <p>Looks like you have not added anything to your cart. Go <br> ahead & explore top categories.</p> 
         </div>
-        <div col-md-6>
+        <div class="button-class" col-md-6>
     <button type="button" routerLink="/products" class="btn btn-primary">Choose products</button>
 </div>
 </div>
